@@ -18,14 +18,9 @@
             <ul>
                 {% if user.is_authenticated %}
 
-                <button class="home"><a href="{% url 'show_my_tasks' %}">My tasks</a></button>
-
-                <button class="home"><a href="{% url 'list_projects' %}">My projects</a></button>
-
                 <button class="logout"><a href="{% url 'logout' %}">Logout</a></button>
 
                 {% else %}
-                <button class="home"><a href="{% url 'login' %}">Login</a></button>
 
                 <button class="home"><a href="{% url 'signup' %}">Signup</a></button>
 

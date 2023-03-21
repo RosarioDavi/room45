@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import JobSeeker, Business
+from accounts.models import User, Jobseeker, Business
 
-admin.site.register(JobSeeker)
+admin.site.register(User),
+admin.site.register(Jobseeker),
 admin.site.register(Business)
