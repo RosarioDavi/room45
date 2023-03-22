@@ -14,3 +14,14 @@ class JobSeekerSignUpForm(UserCreationForm):
         user.is_jobseeker = True
         user.save()
         return user
+
+class BusinessSignUpForm(UserCreationForm):
+
+    class Meta(UserCreationForm.Meta):
+        model = User
+    
+    def save(self):
+        user = super().save(commit=False)
+        user.is_business = True
+        user.save()
+        return user

@@ -5,9 +5,18 @@ from django.views.generic.list import ListView
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from accounts.models import User, Jobseeker, Business
-from accounts.forms import JobSeekerSignUpForm
+from accounts.forms import JobSeekerSignUpForm, BusinessSignUpForm
 
 # Create your views here.
+class HomeView(ListView):
+    model = User
+    template_name = "registration/home.html"
+
+class SignupView(ListView):
+    model = User
+    template_name = "registration/signup.html"
+
+
 class JobSeekerSignUpView(CreateView):
     model = User
     form_class = JobSeekerSignUpForm
@@ -23,10 +32,21 @@ class JobSeekerSignUpView(CreateView):
         return redirect('jobseeker_home')
  
  
-class SignupView(ListView):
-    model 
-    
+class BusinessSignUpView(CreateView):
+    model = User
+    form_class = BusinessSignUpForm
+    template_name = 'registration/businesssignup.html'
 
+    def get_context_data(self, **kwargs):
+        kwargs['user_type'] = 'business'
+        return super().get_context_data(**kwargs)
+        
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('business_home')  
+    
+    
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
