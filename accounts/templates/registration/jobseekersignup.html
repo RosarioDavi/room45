@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 <body>
-    <h1>jobseeker signup</h1>
+    <h1>Jobseeker Signup</h1>
+    <form method="POST" novalidate>
         {% csrf_token %}
         {{ form.as_p }}
-    <button type="submit">Login</button>
+        <button type="submit">Signup</button>
+    </form>
 {% endblock content %}
 
 </body>

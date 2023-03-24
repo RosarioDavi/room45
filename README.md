@@ -8,7 +8,7 @@ Room45
 An app to help job seekers and recuriters connect and help the process of searching for the right candidate and job. 
 
 ## Authors and acknowledgment
-Rosario Davi and John Kim (Woojae)
+Rosario Davi, John Kim (Woojae) and Kyle DiJoseph
 
 ## Important Note
 Much of this project was done live coding together.

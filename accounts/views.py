@@ -47,17 +47,17 @@ class BusinessSignUpView(CreateView):
         return redirect('business_home')  
     
     
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        if instance.is_jobseeker:
-            Jobseeker.objects.create(user=instance)
-        elif instance.is_business:
-            Business.objects.create(user=instance)
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         if instance.is_jobseeker:
+#             Jobseeker.objects.create(user=instance)
+#         elif instance.is_business:
+#             Business.objects.create(user=instance)
 
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    if instance.is_jobseeker:
-        instance.jobseeker.save()
-    elif instance.is_business:
-        instance.business.save()
+# @receiver(post_save, sender=User)
+# def save_user_profile(sender, instance, **kwargs):
+#     if instance.is_jobseeker:
+#         instance.jobseeker.save()
+#     elif instance.is_business:
+#         instance.business.save()

@@ -9,10 +9,11 @@ class JobSeekerSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
 
-    def save(self):
+    def save(self, commit=True):
         user = super().save(commit=False)
         user.is_jobseeker = True
-        user.save()
+        if commit:
+            user.save()
         return user
 
 class BusinessSignUpForm(UserCreationForm):
